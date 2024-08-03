@@ -1,0 +1,57 @@
+<div class="alert alert-primary mt-3">
+  <div class="row" *ngIf="getObj; else noObj">
+    <div class="col-md-8">
+      <p class="m-0 d-flex">
+        <mat-icon color="accent" matListIcon>shopping_bag</mat-icon>
+        <strong>{{ getObj.pname }}</strong>
+      </p>
+      <hr />
+      <p class="m-0 d-flex">
+        <mat-icon color="accent" matListIcon>location_on</mat-icon>
+        <strong>Product status : {{ getObj.pStatus }}</strong>
+      </p>
+      <div class="d-flex">
+        <span><mat-icon color="accent" matListIcon>summarize</mat-icon></span>
+        <div class="mb-3 mb-md-0">
+          <strong>Product Details : </strong>
+          <p class="productDetails m-0 d-flex">
+            {{ getObj.productDescription }}
+          </p>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <button
+        routerLink="editProduct"
+        [queryParamsHandling]="'preserve'"
+        mat-raised-button
+        color="primary"
+        class="mt-4 ml-2 mb-4 mb-md-0"
+      >
+        Edit Product
+      </button>
+      <button
+        (click)="onProductRemove()"
+        mat-raised-button
+        color="warn"
+        class="mt-4 ml-2 mb-4 mb-md-0"
+      >
+        Remove Product
+      </button>
+      </div>
+      
+    </div>
+
+    <div class="col-md-4">
+      <figure class="mb-0">
+        <div class="imgContainer">
+          <img [src]="getObj.productImg" [alt]="getObj.pname" />
+        </div>
+      </figure>
+    </div>
+  </div>
+
+  <ng-template #noObj>
+    <span class="text-danger">No product details are available to show !!</span>
+  </ng-template>
+</div>

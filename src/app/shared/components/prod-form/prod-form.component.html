@@ -1,0 +1,108 @@
+<h2 class="text-center mt-2 font-weight-bold">
+  {{ isInEditMode ? "Update Product Form" : "Add Product Form" }}
+</h2>
+
+<div class="col-md-8 offset-md-2">
+  <form [formGroup]="prodForm" (ngSubmit)="onSubmit()">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          {{ isInEditMode ? "update product" : "Add Product" }}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-label>Product Name</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Product Name"
+                required
+                formControlName="pname"
+                id="pname"
+              />
+              <mat-icon color="primary" matSuffix>shopping_bag</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-label>Product Status</mat-label>
+              
+              <mat-select
+                type="text"
+                placeholder="Product Status"
+                required
+                formControlName="pStatus"
+                id="pStatus"
+              >
+                <mat-option value="In-progress">In-progress</mat-option>
+                <mat-option value="Dispatched">Dispatched</mat-option>
+                <mat-option value="Delivered">Delivered</mat-option>
+              </mat-select>
+              <mat-icon color="primary" matSuffix>location_on</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-label>Product Image</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Product Image"
+                required
+                formControlName="productImg"
+                id="productImg"
+              />
+              <mat-icon color="primary" matSuffix>image</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-label>Product Description</mat-label>
+
+              <textarea
+                type="text"
+                matInput
+                placeholder="Product Description"
+                required
+                formControlName="productDescription"
+                id="productDescription"
+              ></textarea>
+              <mat-icon color="primary" matSuffix>summarize</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-label>Can Return</mat-label>
+             
+              <mat-select
+                type="text"
+                placeholder="Product Status"
+                required
+                formControlName="canReturn"
+                id="canReturn"
+              >
+                <mat-option value="0">0</mat-option>
+                <mat-option value="1">1</mat-option>
+              </mat-select>
+              <mat-icon color="primary" matSuffix>assignment_return</mat-icon>
+            </mat-form-field>
+          </div>
+          
+        </div>
+
+        <button type="submit"class="mt-4" mat-raised-button color="primary" *ngIf="!isInEditMode">
+            Add Product
+        </button>
+        <button (click)="onUpdate()"  [disabled]="canReturn==0"  type="button" class="mt-4" mat-raised-button color="primary"  *ngIf="isInEditMode">
+            Update Product
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>

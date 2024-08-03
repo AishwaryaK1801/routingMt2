@@ -1,0 +1,54 @@
+<div class="alert alert-primary mt-3">
+  <div class="row" *ngIf="getObj; else noObj">
+    <div class="col-md-8">
+      <p class="m-0 d-flex">
+        <mat-icon color="accent" matListIcon>person</mat-icon>
+        <strong>{{ getObj.userName }}</strong>
+      </p>
+      <hr />
+      <p class="m-0 d-flex">
+        <mat-icon color="accent" matListIcon>question_mark</mat-icon>
+        <strong>User Role : {{ getObj.userRole | titlecase }}</strong>
+      </p>
+      <div class="d-flex">
+        <span><mat-icon color="accent" matListIcon>summarize</mat-icon></span>
+        <div class="mb-3 mb-md-0">
+          <strong>User Details : </strong>
+          <p class="details m-0 d-flex">{{ getObj.userDetails }}</p>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <button
+          routerLink="editUser"
+          [queryParamsHandling]="'preserve'"
+          mat-raised-button
+          color="primary"
+          class="mt-4 ml-2 mb-4 mb-md-0"
+        >
+          Edit User
+        </button>
+        <button
+          (click)="onUserRemove()"
+          mat-raised-button
+          color="warn"
+          class="mt-4 ml-2 mb-4 mb-md-0"
+        >
+          Remove User
+        </button>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <figure class="mb-0">
+        <div class="imgContainer">
+          <img [src]="getObj.personImg" [alt]="getObj.userName" />
+        </div>
+      </figure>
+    </div>
+  </div>
+
+  <ng-template #noObj>
+    <span class="text-danger">No user details are available to show !!</span>
+  </ng-template>
+</div>

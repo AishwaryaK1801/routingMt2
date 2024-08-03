@@ -1,0 +1,20 @@
+<div class="row mt-4">
+    <div class="d-flex justify-content-end col-12">
+        <mat-icon class="addBtn" routerLink="addProduct" fontIcon="add_circle" color="primary"></mat-icon>
+        <strong class="ml-2">Add Products</strong>
+    </div>
+
+    <div class="col-md-6 mt-2">
+        <mat-list class="bg-white p-0" *ngIf="prodData ; else noProdData">
+            <h2 matLine class="text-center text-primary font-weight-bold">Products List</h2>
+            <mat-divider></mat-divider>
+            <mat-list-item [routerLink]="prod.pId" [queryParams]="{canReturn : prod.canReturn}" *ngFor="let prod of prodData">
+                <mat-icon color="accent" matListIcon>shopping_bag</mat-icon>
+                {{prod.pname}}</mat-list-item>
+        </mat-list>
+    </div>
+
+    <ng-template #noProdData>
+        <span class="text-danger"> No products Data is available !!</span>
+    </ng-template>
+</div>

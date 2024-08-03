@@ -1,0 +1,31 @@
+.addBtn{
+    scale: 1.5;
+    transition: all .4s ease-in-out;
+    cursor: pointer;
+}
+
+.addBtn:hover,
+.addBtn:active,
+.addBtn:focus{
+    scale: 2;
+}
+mat-list{
+    box-shadow: 0px 0px 15px #92158b;
+    border: 2px solid #3f072f;
+}
+
+mat-list-item{
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+
+
+mat-list-item:hover,
+mat-list-item:focus,
+mat-list-item:active{
+    filter: drop-shadow(0px 0px 10px #0ac48f);
+    color:#0c1179;
+    scale: 1.02;
+    // box-shadow:0px 0px 10px #0ac48f ;
+    // border: 2px solid #3f072f;
+}

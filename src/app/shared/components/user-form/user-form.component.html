@@ -1,0 +1,92 @@
+<h2 class="text-center mt-2 font-weight-bold">
+    {{ isInEditMode ? "Update User Form" : "Add User Form" }}
+  </h2>
+  
+  <div class="col-md-8 offset-md-2">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            {{ isInEditMode ? "update User" : "Add User" }}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-label>User Name</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="User Name"
+                  required
+                  formControlName="userName"
+                  id="userName"
+                />
+                <mat-icon color="primary" matSuffix>person</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-label>User Role</mat-label>
+                
+                <mat-select
+                  type="text"
+                  placeholder="User Role"
+                  required
+                  formControlName="userRole"
+                  id="userRole"
+                >
+                  <mat-option value="admin">Admin</mat-option>
+                  <mat-option value="buyer">Buyer</mat-option>
+                </mat-select>
+                <mat-icon color="primary" matSuffix>question_mark</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-label>User Image</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="User Image"
+                  required
+                  formControlName="personImg"
+                  id="personImg"
+                />
+                <mat-icon color="primary" matSuffix>image</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-label>User Description</mat-label>
+  
+                <textarea
+                  type="text"
+                  matInput
+                  placeholder="User Description"
+                  required
+                  formControlName="userDetails"
+                  id="userDetails"
+                ></textarea>
+                <mat-icon color="primary" matSuffix>summarize</mat-icon>
+              </mat-form-field>
+            </div>
+           
+            
+          </div>
+  
+          <button type="submit" class="mt-4" mat-raised-button color="primary" *ngIf="!isInEditMode">
+              Add User
+          </button>
+          <button [disabled]="userRole=='buyer'" (click)="onUpdate()" type="button" class="mt-4" mat-raised-button color="primary"  *ngIf="isInEditMode">
+              Update User
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+  
